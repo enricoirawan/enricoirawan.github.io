@@ -1,0 +1,137 @@
+.navigation {
+    &__checkbox {}
+
+    &__button {
+        display: inline-block;
+        height: 7rem;
+        width: 7rem;
+        position: fixed;
+        top: 3.5rem;
+        right: 3.5rem;
+        background: white;
+        z-index: 200;
+        border-radius: 100%;
+        box-shadow: 0 1rem 2rem rgba($warna-text-hitam, $alpha: .3);
+        cursor: pointer;
+        text-align: center;
+    }
+
+    &__background {
+        display: inline-block;
+        height: 6rem;
+        width: 6rem;
+        position: fixed;
+        top: 4rem;
+        right: 4rem;
+        background: radial-gradient($warna-hijau-muda, $warna-hijau-tua);
+        z-index: 100;
+        border-radius: 100%;
+        transition: .8s all 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+    }
+
+    &__nav {
+        position: fixed;
+        z-index: 150;
+        height: 100vh;
+        width: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: .8s all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    }
+
+    &__list {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        list-style: none;
+        text-align: center;
+    }
+
+    &__item {
+        margin: 1rem;
+    }
+
+    &__link {
+        text-transform: uppercase;
+        text-decoration: none;
+        font-size: 3rem;
+        color: $warna-text-putih;
+        display: inline-block;
+        font-weight: 300;
+        background: linear-gradient(120deg, transparent 0%, transparent 50%, white 50%);
+        background-size: 230%;
+        background-position: 0%;
+        padding: 1rem 2rem;
+        transition: .4s all;
+
+        &:hover {
+            background-position: 100%;
+            color: $warna-hijau-muda;
+        }
+
+        //ukuran tablet potrait
+        @include responsive(tablet-potrait) {
+            font-size: 2.3rem;
+        }
+    }
+
+    // ketika &__checkbox di check maka akan memilih element &__background, dan akan menscale background
+    &__checkbox:checked~&__background {
+        transform: scale(80);
+    }
+
+
+    &__checkbox:checked~&__nav {
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+    }
+
+    //icon
+    &__icon {
+        width: 3rem;
+        height: 2px;
+        display: inline-block;
+        background: #3e3e3e;
+        position: relative;
+        margin-top: 3.5rem;
+        transition: .1s all;
+
+        &::before,
+        &::after {
+            content: "";
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+            position: absolute;
+            left: 0;
+            background: #3e3e3e;
+            transition: .5s all;
+        }
+
+        &::before {
+            top: -1rem;
+        }
+
+        &::after {
+            top: 1rem;
+        }
+    }
+
+    &__checkbox:checked~&__button &__icon {
+        background: transparent;
+
+        &::before {
+            transform: rotate(135deg);
+            top: 0;
+        }
+
+        &::after {
+            transform: rotate(-135deg);
+            top: 0;
+
+        }
+    }
+}

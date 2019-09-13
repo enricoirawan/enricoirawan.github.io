@@ -1,0 +1,29 @@
+@mixin clearfix {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+// media query
+
+@mixin responsive($perangkat) {
+    @if $perangkat==phone {
+        @media (max-width: 600px) {
+            @content;
+        }
+    }
+
+    @if $perangkat==tablet-potrait {
+        @media (max-width: 900px) {
+            @content;
+        }
+    }
+
+    @if $perangkat==tablet-landscape {
+        @media (max-width: 1200px) {
+            @content;
+        }
+    }
+}

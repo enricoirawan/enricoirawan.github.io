@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+
+    /* 1 rem = 10 px, tergantung dar iukuran root font-size nya */
+
+    @include responsive(tablet-landscape) {
+        font-size: 9px;
+    }
+
+    @include responsive(tablet-potrait) {
+        font-size: 8px;
+    }
+
+    @include responsive(phone) {
+        font-size: 7px;
+    }
+}
+
+::selection {
+    background: $warna-hijau-medium;
+    color: white;
+}
+
+
+
+/* Phone <= 600px
+Tablet potrait <= 900px
+tablet landscape <= 1200px
+Desktop = 1200px - 1800px
+Big Desktop > 1800px */

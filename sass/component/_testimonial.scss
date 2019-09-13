@@ -1,0 +1,73 @@
+.testimonial {
+    @include responsive(tablet-potrait) {
+        width: 110%;
+    }
+
+    @include responsive(phone) {
+        transform: skew(0deg);
+        width: 100%;
+    }
+
+    width: 75%;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    background: $warna-text-putih;
+    padding: 6rem;
+    padding-left: 9rem;
+    box-shadow: 0 3rem 6rem rgba($warna-text-hitam, .1);
+    transform: skewX(-12deg);
+
+    &>* {
+        transform: skewX(12deg);
+
+        @include responsive(phone) {
+            transform: skewX(0deg);
+        }
+    }
+
+    &__shape {
+        width: 13rem;
+        height: 13rem;
+        float: left;
+        clip-path: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        transform: translate(-4rem) skewX(12deg);
+
+        @include responsive(tablet-potrait) {
+            transform: translate(-2rem) skewX(12deg);
+        }
+
+        @include responsive(phone) {
+            transform: translate(-2rem) skewX(0);
+        }
+    }
+
+    &-gambar {
+        height: 100%;
+        width: 100%;
+        transform: scale(1.4);
+        transition: .5s all;
+    }
+
+    &-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        text-align: center;
+        color: $warna-text-putih;
+        text-transform: uppercase;
+        transition: .5s all;
+        opacity: 0;
+    }
+
+    &:hover &-caption {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    &:hover &-gambar {
+        transform: scale(1);
+        filter: blur(5px);
+    }
+}

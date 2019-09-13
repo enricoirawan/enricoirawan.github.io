@@ -1,0 +1,94 @@
+.btn {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.6rem 4rem;
+    display: inline-block;
+    border-radius: 100px;
+    transition: 0.2s all;
+    position: relative;
+    z-index: 1;
+    animation-name: GerakanKeAtas;
+    animation-duration: 2s;
+    font-size: 1.6rem;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.3);
+        /*box-shadow : 0(besaran bayangan horizontal), 20px(besaran bayangan vertikal), 20px(besaran blur bayangan)*/
+    }
+
+    &:active,
+    &:focus {
+        transform: translateY(-1px);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+        outline: none;
+    }
+
+    &:after {
+        content: "";
+        /* jika membuat psudo class, harus ada content, walaupun gk mau nambahin apapun */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 10rem;
+        z-index: -1;
+        transition: 0.2s;
+        opacity: 1;
+    }
+
+    &:after {
+        background: #fff;
+    }
+
+    &:hover::after {
+        transform: scale(1.4, 1.7);
+        /* scale(1.4, 1.7) atas & bawah membesar 1.4x , kiri & kanan membesar 1.7x */
+        opacity: 0;
+    }
+
+    &--white {
+        background: #fff;
+        color: #777;
+
+        &:after {
+            background: #fff;
+        }
+    }
+
+    &-hijau {
+        background: $warna-hijau-medium;
+        color: $warna-text-putih;
+
+        &:after {
+            background: $warna-hijau-medium;
+        }
+    }
+
+
+    &-text {
+        font-size: 1.6rem;
+        text-decoration: none;
+        color: $warna-hijau-medium;
+        display: inline-block;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid $warna-hijau-medium;
+        font-weight: 600;
+        transition: -3s;
+
+        &:hover {
+            background: $warna-hijau-medium;
+            transform: translateY(-3px);
+            color: $warna-text-putih;
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+        }
+
+        &:active {
+            transform: translateY(-1px);
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.3);
+        }
+    }
+}
